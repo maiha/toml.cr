@@ -479,7 +479,7 @@ class TOML::Lexer
         Time.new(year, month, day, hour, minute, second, microseconds / 1000, kind: Time::Kind::Utc) # 0.23.x or lower
       {% elsif Crystal::VERSION =~ /^0\.24\./ %}
         Time.new(year, month, day, hour, minute, second, nanosecond: microseconds * 1000, kind: Time::Kind::Utc) # 0.24.x breaks arguments
-      {% elseif Crystal::VERSION =~ /^0\.2[5-7]\./ %}
+      {% elsif Crystal::VERSION =~ /^0\.2[5-7]\./ %}
         Time.new(year.to_i32, month, day, hour, minute, second, nanosecond: microseconds * 1000, location: Time::Location::UTC) # 0.25.x breaks `Time::Kind`
       {% else %}
         Time.local(year.to_i32, month, day, hour, minute, second, nanosecond: microseconds * 1000, location: Time::Location::UTC) # 0.28 deprecated `Time.new`
